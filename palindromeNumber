@@ -1,0 +1,9 @@
+class Solution {
+    
+    func isPalindrome(_ x: Int) -> Bool {
+        let stringNumber = String(x)
+        let reversedNumber = stringNumber.reversed()
+        let reversedStringNumber = String(reversedNumber)
+        return stringNumber == reversedStringNumber
+    }
+}
