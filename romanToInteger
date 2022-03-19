@@ -1,0 +1,23 @@
+class Solution {
+    
+    func romanToInt(_ s: String) -> Int {
+        let roman = ["I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000]
+        var number = 0
+        guard var lastRomanSymbol = roman["I"] else { return number }
+        
+        for romanSymbol in s.reversed() {
+            let romanStringSymbol = String(romanSymbol)
+            guard let romanSymbol = roman[romanStringSymbol] else { return number }
+            
+            if romanSymbol < lastRomanSymbol {
+                number -= romanSymbol
+            } else {
+                number += romanSymbol
+            }
+            
+            lastRomanSymbol = romanSymbol
+        }
+        
+        return number
+    }
+}
