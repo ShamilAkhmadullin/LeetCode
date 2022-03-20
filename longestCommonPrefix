@@ -1,0 +1,16 @@
+class Solution {
+    
+    func longestCommonPrefix(_ strs: [String]) -> String {
+        guard !strs.isEmpty else { return "" }
+        
+        var common = strs[0]
+        
+        for string in strs {
+            while !string.hasPrefix(common) {
+                common = String(common.dropLast())
+            }
+        }
+        
+        return common
+    }
+}
