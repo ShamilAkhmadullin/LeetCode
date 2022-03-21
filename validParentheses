@@ -1,0 +1,20 @@
+class Solution {
+    
+    func isValid(_ s: String) -> Bool {
+        let parentheses: [Character: Character] = [")": "(", "}": "{", "]": "["]
+        var stack: [Character] = []
+        
+        s.forEach { char in
+            if char == "(" || char == "{" || char == "[" {
+                stack.append(char)
+            } else {
+                guard let lastChar = stack.last else { return }
+                guard lastChar == parentheses[char] else { return }
+                
+                stack.removeLast()
+            }
+        }
+        
+        return stack.count == 0
+    }
+}
