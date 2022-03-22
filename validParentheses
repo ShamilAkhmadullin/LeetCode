@@ -4,12 +4,12 @@ class Solution {
         let parentheses: [Character: Character] = [")": "(", "}": "{", "]": "["]
         var stack: [Character] = []
         
-        s.forEach { char in
+        for char in s {
             if char == "(" || char == "{" || char == "[" {
                 stack.append(char)
             } else {
-                guard let lastChar = stack.last else { return }
-                guard lastChar == parentheses[char] else { return }
+                guard let lastChar = stack.last else { return false }
+                guard lastChar == parentheses[char] else { return false }
                 
                 stack.removeLast()
             }
