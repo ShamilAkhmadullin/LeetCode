@@ -1,0 +1,27 @@
+class Solution {
+    
+    func strStr(_ haystack: String, _ needle: String) -> Int {
+        guard !needle.isEmpty else { return 0 }
+        guard haystack.count >= needle.count else { return -1 }
+        
+        let shiftsCount = haystack.count - needle.count + 1
+        
+        for shift in 0..<shiftsCount {
+            var isSubstring = true
+            for offset in 0..<needle.count {
+                let haystackCharacter = haystack[String.Index(encodedOffset: shift + offset)]
+                let needleCharacter = needle[String.Index(encodedOffset: offset)]
+                guard haystackCharacter == needleCharacter else {
+                    isSubstring = false
+                    break
+                }
+            }
+            
+            if isSubstring {
+                return shift
+            }
+        }
+        
+        return -1
+    }
+}
