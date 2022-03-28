@@ -1,0 +1,24 @@
+class Solution {
+    
+    func searchInsert(_ nums: [Int], _ target: Int) -> Int {
+        guard !nums.isEmpty else { return 0 }
+        guard let firstNum = nums.first else { return 0 }
+        guard let lastNum = nums.last else { return 0 }
+        
+        if target <= firstNum {
+            return 0
+        }
+        
+        if target > lastNum {
+            return nums.count
+        }
+        
+        for i in 1..<nums.count {
+            if target > nums[i-1] && target <= nums[i] {
+                return i
+            }
+        }
+        
+        return 0
+    }
+}
