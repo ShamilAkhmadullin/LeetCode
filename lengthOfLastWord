@@ -1,0 +1,10 @@
+class Solution {
+    
+    func lengthOfLastWord(_ s: String) -> Int {
+        if let lastWord = s.components(separatedBy: " ").filter({ $0 != "" }).last {
+            return lastWord.count
+        } else {
+            return 0
+        }
+    }
+}
