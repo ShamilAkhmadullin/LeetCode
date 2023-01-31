@@ -1,14 +1,16 @@
 class Solution {
     
     func maxSubArray(_ nums: [Int]) -> Int {
-        var currentNum = nums[0]
-        var maxNum = nums[0]
+        var res = nums[0]
+        var total = 0
         
-        for num in 1..<nums.count {
-            currentNum = max(nums[num], currentNum + nums[num])
-            maxNum = max(maxNum, currentNum)
+        for n in nums {
+            total += n
+            res = max(res, total)
+            if total < 0 {
+                total = 0
+            }
         }
-        
-        return maxNum
+        return res
     }
 }
