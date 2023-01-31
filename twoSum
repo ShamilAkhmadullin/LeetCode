@@ -1,16 +1,16 @@
 class Solution {
     
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-        var indexes: [Int: Int] = [:]
-  
-        for (index, num) in nums.enumerated() {
-            if let lastIndex = indexes[target - num] {
-                return [lastIndex, index]
-            }
-    
-            indexes[num] = index
-        }
+        var prevMap = [Int:Int]()
         
-        fatalError("No valid outputs")
+        for (index, num) in nums.enumerated() {
+            let diff = target - num
+            if let firstIndex = prevMap[diff] {
+                return [firstIndex, index]
+            }
+            prevMap[num] = index
+        }
+
+        return []
     }
 }
